@@ -1,0 +1,21 @@
+pipeline {
+  agent { label 'master' }
+
+  tools {
+    jdk 'Java8'
+    maven 'Maven3.3.9'
+  }
+ 
+stages {
+    stage('Git checkout'){
+      steps {
+        git 'https://github.com/oohareddy786/oohagame.git'
+      }
+    }
+    stage('Maven build'){
+      steps {
+        sh 'mvn clean install'
+      }
+    }
+ }
+}
